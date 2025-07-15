@@ -7,8 +7,8 @@ import os
 
 st.title("Smart Notes")
 
-OCR_WEBHOOK_PROD="http://localhost:5678/webhook/d0101d2d-9b12-4684-bc31-257f860f8eec"
-NOTION_WEBHOOK_PROD="http://localhost:5678/webhook/3dbd12d0-0805-4fce-b924-868e2ccb5ff4"
+OCR_WEBHOOK_PROD="http://192.168.1.135:5678/webhook/d0101d2d-9b12-4684-bc31-257f860f8eec"
+NOTION_WEBHOOK_PROD="http://192.168.1.135:5678/webhook/3dbd12d0-0805-4fce-b924-868e2ccb5ff4"
 OCR_API_KEY=os.getenv("API_KEY", "your_api_key_here")
 
 uploaded_file = st.file_uploader("Carica una foto", type=["jpg", "jpeg", "png"])
