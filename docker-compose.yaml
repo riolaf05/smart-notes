@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+
+  smart_notes: #frontend
+    image: rio05docker/smart_notes:latest
+    restart: always
+    environment:
+      - API_KEY=${API_KEY}
+    ports:
+      - "8503:8501" 
+    networks:
+      - agent_network
+
+networks:
+  agent_network:
+    driver: bridge
