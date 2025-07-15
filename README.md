@@ -1,47 +1,51 @@
-# Appunti AI
+# Smart Notes
 
-Appunti AI è un supporto allo studio che consente di riassumere automaticamente le immagini delle pagine di libri. Le immagini vengono scattate, elaborate per estrarre il testo e generare un riassunto, che viene poi salvato su una pagina Notion specificata dall'utente.
+Smart Notes is a study aid that automatically summarizes images of book pages. Images are captured, processed to extract text, and summarized, with the results saved to a Notion page specified by the user.
 
-## Funzionalità
+## Features
 
-- Acquisizione immagini di pagine di libri
-- Estrazione automatica del testo dalle immagini
-- Generazione di riassunti dei contenuti
-- Salvataggio dei riassunti su una pagina Notion
+- Capture images of book pages
+- Automatic text extraction from images (OCR)
+- Content summarization using LLMs
+- Save summaries to a Notion page
 
-## Setup del progetto
+## Architecture
 
-### 1. Configurazione del workflow n8n
+This project uses a backend exposed via n8n, which orchestrates the workflow. When an image is submitted, n8n invokes endpoints hosted on Azure Container Apps. These endpoints perform OCR on the provided image to extract text, and then use a Large Language Model (LLM) to generate a summary of the extracted content. The final summary is then saved to the user's Notion page via the Notion API.
 
-1. Accedi all'istanza n8n all'indirizzo:  
-    `http://<server_casa>:5678/projects/F0u3PIPriMdsGvXi/workflows`
-2. Configura il workflow seguendo le istruzioni presenti nell'interfaccia.
-3. Inserisci le credenziali Notion e gli altri parametri richiesti.
+## Project Setup
 
-### 2. Setup con Docker
+### 1. n8n Workflow Configuration
 
-Assicurati di avere Docker installato sul tuo sistema.
+1. Access your n8n instance at:  
+    `http://<home_server>:5678/projects/F0u3PIPriMdsGvXi/workflows`
+2. Configure the workflow following the instructions in the interface.
+3. Enter your Notion credentials and other required parameters.
 
-1. Clona questo repository:
+### 2. Docker Setup
+
+Make sure Docker is installed on your system.
+
+1. Clone this repository:
     ```bash
-    git clone https://github.com/<tuo-utente>/appunti-ai.git
-    cd appunti-ai
+    git clone https://github.com/<your-username>/smart-notes.git
+    cd smart-notes
     ```
-2. Crea un file `.env` con le variabili necessarie (vedi esempio `.env.example`).
-3. Avvia i servizi con Docker Compose:
+2. Create a `.env` file with the required variables (see `.env.example` for reference).
+3. Start the services with Docker Compose:
     ```bash
     docker-compose up -d
     ```
-4. Verifica che i container siano in esecuzione:
+4. Check that the containers are running:
     ```bash
     docker ps
     ```
 
-## Note
+## Notes
 
-- Assicurati che la pagina Notion sia accessibile tramite le API e che il token sia valido.
-- Personalizza il workflow n8n secondo le tue esigenze.
+- Ensure your Notion page is accessible via the API and the token is valid.
+- Customize the n8n workflow to fit your needs.
 
-## Licenza
+## License
 
-Questo progetto è distribuito con licenza MIT.
+This project is distributed under the MIT license.
